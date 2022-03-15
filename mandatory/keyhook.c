@@ -6,11 +6,18 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:18:32 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 18:27:52 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:32:03 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_destroywin(int keycode)
+{
+	(void)keycode;
+	printf("Exit!\n");
+	exit(0);
+}
 
 void	fnct(t_data *var)
 {

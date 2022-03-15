@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:41:05 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 16:00:11 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:29:39 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	drawcollect(t_data *c);
 void	drawplayer(t_data *p);
 int		key_hook(int keycode, t_data *vars);
 int		ft_count(char **s);
+int		ft_destroywin(int keycode);
 char	*get_next_line(int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(char *s1);

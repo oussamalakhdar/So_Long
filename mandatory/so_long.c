@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:18:37 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 18:25:50 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:32:25 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	put_image(t_data *vr, char **argv)
 	if (vr->move == 0)
 		printf("Number of movement = %d\n", vr->move);
 	mlx_key_hook(vr->win, key_hook, vr);
+	mlx_hook(vr->win, 17, 0, ft_destroywin, (void *)0);
 	drawimage(vr);
 }
 
