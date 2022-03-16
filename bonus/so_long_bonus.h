@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:41:05 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/16 21:06:30 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:06:19 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <mlx.h>
 # include <unistd.h>
@@ -32,11 +32,13 @@ typedef struct s_data {
 	void	*img3;
 	void	*img4;
 	void	*img5;
+	void	*img6;
 	char	*wall;
 	char	*collectible;
 	char	*player;
 	char	*exit;
 	char	*empty;
+	char	*sprite;
 	int		move;
 	int		fd;
 	int		xplayer;
@@ -70,6 +72,6 @@ int		ft_strlen(char *str);
 int		ft_strchr(char *s, char c);
 void	drawimage(t_data *f);
 void	ft_countcollectible(t_data *coll);
-void	ft_free(t_data *ptr);
+char	*ft_itoa(int n);
 
 #endif

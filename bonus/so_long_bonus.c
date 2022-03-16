@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:18:37 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/16 21:05:39 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:00:13 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_countcollectible(t_data *coll)
 {
@@ -86,6 +86,13 @@ void	drawimage(t_data *f)
 	}
 	drawplayer(f);
 	drawcollect(f);
+	// j = 0;
+	// while (f->map[3][j]) 
+	// {
+	// 	mlx_put_image_to_window(f->mlx, f->win, f->img6, X * j, Y * 3);
+	// 	j++;
+	// }
+	mlx_string_put(f->mlx, f->win, 50, 50, 0xFFFFFF, ft_itoa(f->move));
 }
 
 void	put_image(t_data *vr, char **argv)
@@ -110,6 +117,7 @@ void	put_image(t_data *vr, char **argv)
 	vr->img3 = mlx_xpm_file_to_image(vr->mlx, vr->player, &w, &h);
 	vr->img4 = mlx_xpm_file_to_image(vr->mlx, vr->exit, &w, &h);
 	vr->img5 = mlx_xpm_file_to_image(vr->mlx, vr->empty, &w, &h);
+	vr->img6 = mlx_xpm_file_to_image(vr->mlx, vr->sprite, &w, &h);
 	if (vr->move == 0)
 		printf("Number of movement = %d\n", vr->move);
 	mlx_key_hook(vr->win, key_hook, vr);
@@ -129,6 +137,7 @@ int	main(int argc, char **argv)
 		v.player = ft_strdup("../images/player.xpm");
 		v.exit = ft_strdup("../images/exit2.xpm");
 		v.empty = ft_strdup("../images/empty.xpm");
+		v.sprite = ft_strdup("../images/sprite.xpm");
 		put_image(&v, argv);
 		mlx_loop(v.mlx);
 	}

@@ -6,11 +6,11 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:55:14 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 10:05:18 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/16 18:35:21 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_cmpt(long long n)
 {
