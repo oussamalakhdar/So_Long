@@ -6,11 +6,24 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:18:37 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/16 21:00:13 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/18 13:31:25 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+int drawsprite(t_data *ptr)
+{
+	if (ptr->xsprite == ft_strlen(ptr->map[0]) - 1)
+		ptr->xsprite = 1;
+	ptr->ysprite = ptr->nbrlines / 2;
+	mlx_clear_window(ptr->mlx, ptr->win);
+	drawimage(ptr);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img6, X * ptr->xsprite, Y * ptr->ysprite);
+	ptr->xsprite++;
+	usleep(60000);
+	return 0;
+}
 
 void	ft_countcollectible(t_data *coll)
 {
@@ -86,12 +99,6 @@ void	drawimage(t_data *f)
 	}
 	drawplayer(f);
 	drawcollect(f);
-	// j = 0;
-	// while (f->map[3][j]) 
-	// {
-	// 	mlx_put_image_to_window(f->mlx, f->win, f->img6, X * j, Y * 3);
-	// 	j++;
-	// }
 	mlx_string_put(f->mlx, f->win, 50, 50, 0xFFFFFF, ft_itoa(f->move));
 }
 
@@ -120,9 +127,10 @@ void	put_image(t_data *vr, char **argv)
 	vr->img6 = mlx_xpm_file_to_image(vr->mlx, vr->sprite, &w, &h);
 	if (vr->move == 0)
 		printf("Number of movement = %d\n", vr->move);
+	drawimage(vr);
+	mlx_loop_hook(vr->mlx, drawsprite, vr);
 	mlx_key_hook(vr->win, key_hook, vr);
 	mlx_hook(vr->win, 17, 0, ft_destroywin, (void *)0);
-	drawimage(vr);
 }
 
 int	main(int argc, char **argv)

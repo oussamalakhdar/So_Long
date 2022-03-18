@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:41:05 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/16 21:06:19 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/18 13:08:56 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_data {
 	int		*ytable;
 	int		xtab;
 	int		ytab;
+	int		xsprite;
+	int		ysprite;
 }	t_data;
 
 char	**ft_buffer(t_data *bf, char **argv);
@@ -73,5 +75,6 @@ int		ft_strchr(char *s, char c);
 void	drawimage(t_data *f);
 void	ft_countcollectible(t_data *coll);
 char	*ft_itoa(int n);
+int		drawsprite(t_data *ptr);
 
 #endif
