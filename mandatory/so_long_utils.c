@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:44:44 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/23 11:23:06 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:51:55 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ char	**ft_buffer(t_data *bf, char **argv)
 	bf->fd = open(argv[1], O_RDONLY);
 	checkopen(bf);
 	buffer = get_next_line(bf->fd);
-	if (buffer == '\0')
-	{
-		ft_printf("Empty Map!\n");
-		exit(1);
-	}
+	checkbuffer(buffer);
 	while (buffer)
 	{
 		str = ft_strjoin(str, buffer);
@@ -44,6 +40,7 @@ char	**ft_buffer(t_data *bf, char **argv)
 		buffer = get_next_line(bf->fd);
 	}
 	free(buffer);
+	checkcharacters(str);
 	s = ft_split(str, '\n');
 	free(str);
 	close(bf->fd);

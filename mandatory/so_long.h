@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:41:05 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/23 11:12:36 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:51:17 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ void	ft_countcollectible(t_data *coll);
 void	tableallocation(t_data *ptr);
 void	checkxpm(t_data *ptr);
 int		ft_printf(char *format, ...);
+int		checkcharacters(char *str);
+void	checkbuffer(char *buffer);
 
 #endif
