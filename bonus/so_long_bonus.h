@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:41:05 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/18 13:08:56 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 10:24:37 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ int		ft_strlen(char *str);
 int		ft_strchr(char *s, char c);
 void	drawimage(t_data *f);
 void	ft_countcollectible(t_data *coll);
+void	taballocation(t_data *ptr);
 char	*ft_itoa(int n);
 int		drawsprite(t_data *ptr);
+void	checkxpm(t_data *ptr);
 
 #endif

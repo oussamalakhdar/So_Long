@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 13:57:17 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/16 18:35:31 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:49:18 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,9 @@ char	*ft_strdup(char *s1)
 	char	*str;
 
 	i = 0;
-	while (s1[i])
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
+	str = malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (str == NULL)
 		return (NULL);
-	i = 0;
 	while (s1[i])
 	{
 		str[i] = s1[i];

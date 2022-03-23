@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:18:37 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/16 21:05:39 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:59:38 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,9 @@ void	put_image(t_data *vr, char **argv)
 	vr->map = ft_buffer(vr, argv);
 	vr->nbrlines = ft_count(vr->map);
 	ft_countcollectible(vr);
-	vr->xtable = malloc(sizeof(int) * vr->nbcollectible);
-	vr->ytable = malloc(sizeof(int) * vr->nbcollectible);
+	tableallocation(vr);
 	vr->xtab = 0;
-	vr->xtab = 0;
+	vr->ytab = 0;
 	vr->win = mlx_new_window(vr->mlx, 100 * ft_strlen(vr->map[0]),
 			100 * vr->nbrlines, "so_long");
 	vr->img1 = mlx_xpm_file_to_image(vr->mlx, vr->wall, &w, &h);
@@ -110,8 +109,9 @@ void	put_image(t_data *vr, char **argv)
 	vr->img3 = mlx_xpm_file_to_image(vr->mlx, vr->player, &w, &h);
 	vr->img4 = mlx_xpm_file_to_image(vr->mlx, vr->exit, &w, &h);
 	vr->img5 = mlx_xpm_file_to_image(vr->mlx, vr->empty, &w, &h);
+	checkxpm(vr);
 	if (vr->move == 0)
-		printf("Number of movement = %d\n", vr->move);
+		ft_printf("Number of movement = %d\n", vr->move);
 	mlx_key_hook(vr->win, key_hook, vr);
 	mlx_hook(vr->win, 17, 0, ft_destroywin, (void *)0);
 	drawimage(vr);
@@ -124,12 +124,20 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		v.mlx = mlx_init();
-		v.wall = ft_strdup("../images/wall3.xpm");
-		v.collectible = ft_strdup("../images/collectible2.xpm");
+		v.wall = ft_strdup("../images/wall.xpm");
+		v.collectible = ft_strdup("../images/collectible.xpm");
 		v.player = ft_strdup("../images/player.xpm");
-		v.exit = ft_strdup("../images/exit2.xpm");
+		v.exit = ft_strdup("../images/exit.xpm");
 		v.empty = ft_strdup("../images/empty.xpm");
+		if (!v.mlx || !v.wall || !v.collectible
+			|| !v.player || !v.exit || !v.empty)
+		{
+			perror("Allocation Failed!\n");
+			exit(1);
+		}
 		put_image(&v, argv);
 		mlx_loop(v.mlx);
 	}
+	else
+		return (0);
 }

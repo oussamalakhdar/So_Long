@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:52:15 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/18 13:31:13 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 09:49:23 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,16 @@ void	ft_drawplayer(t_data *e, int i, int j)
 		&& e->nbcollectible == 0)
 	{	
 		printf("Nice play! You Won.\n");
+		usleep(150000);
 		exit(0);
 	}
 	else if (X * e->xsprite == X * (j + e->xplayer)
-			&& Y * e->ysprite == Y * (i + e->yplayer))
+		&& Y * e->ysprite == Y * (i + e->yplayer))
 	{
 		printf("Game Over! You Lose.\n");
-		usleep(20000);
+		usleep(150000);
 		exit(0);
-	}	
+	}
 	else
 		mlx_put_image_to_window(e->mlx, e->win, e->img3,
 			X * (j + e->xplayer), Y * (i + e->yplayer));

@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:52:15 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 16:16:35 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:22:10 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_drawplayer(t_data *e, int i, int j)
 		&& Y * (i + e->yplayer) == e->yexit * 100
 		&& e->nbcollectible == 0)
 	{	
-		printf("Nice play! You Won.\n");
+		ft_printf("Nice play! You Won.\n");
 		exit(0);
 	}
 	else

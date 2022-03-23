@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:18:32 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 21:32:03 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:21:12 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_destroywin(int keycode)
 {
 	(void)keycode;
-	printf("Exit!\n");
+	ft_printf("Exit!\n");
 	exit(0);
 }
 
@@ -24,7 +24,7 @@ void	fnct(t_data *var)
 	var->move += 1;
 	mlx_clear_window(var->mlx, var->win);
 	drawimage(var);
-	printf("Number of movement = %d\n", var->move);
+	ft_printf("Number of movement = %d\n", var->move);
 }
 
 void	keyextra(t_data *var)
@@ -56,7 +56,7 @@ int	key_hook(int keycode, t_data *vars)
 	vars->key = keycode;
 	if (keycode == 53)
 	{
-		printf("Exit!\n");
+		ft_printf("Exit!\n");
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
 	}

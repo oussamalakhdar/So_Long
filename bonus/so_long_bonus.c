@@ -6,24 +6,11 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:18:37 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/18 13:31:25 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:59:42 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-int drawsprite(t_data *ptr)
-{
-	if (ptr->xsprite == ft_strlen(ptr->map[0]) - 1)
-		ptr->xsprite = 1;
-	ptr->ysprite = ptr->nbrlines / 2;
-	mlx_clear_window(ptr->mlx, ptr->win);
-	drawimage(ptr);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img6, X * ptr->xsprite, Y * ptr->ysprite);
-	ptr->xsprite++;
-	usleep(60000);
-	return 0;
-}
 
 void	ft_countcollectible(t_data *coll)
 {
@@ -77,11 +64,11 @@ void	checkwall(t_data *w, int i, int j)
 
 void	drawimage(t_data *f)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*movement;
 
 	i = 0;
-	j = 0;
 	ft_checkmap(f);
 	while (i < f->nbrlines)
 	{
@@ -99,7 +86,9 @@ void	drawimage(t_data *f)
 	}
 	drawplayer(f);
 	drawcollect(f);
-	mlx_string_put(f->mlx, f->win, 50, 50, 0xFFFFFF, ft_itoa(f->move));
+	movement = ft_itoa(f->move);
+	mlx_string_put(f->mlx, f->win, 50, 50, 0xFFFFFF, movement);
+	free(movement);
 }
 
 void	put_image(t_data *vr, char **argv)
@@ -113,10 +102,7 @@ void	put_image(t_data *vr, char **argv)
 	vr->map = ft_buffer(vr, argv);
 	vr->nbrlines = ft_count(vr->map);
 	ft_countcollectible(vr);
-	vr->xtable = malloc(sizeof(int) * vr->nbcollectible);
-	vr->ytable = malloc(sizeof(int) * vr->nbcollectible);
-	vr->xtab = 0;
-	vr->xtab = 0;
+	taballocation(vr);
 	vr->win = mlx_new_window(vr->mlx, 100 * ft_strlen(vr->map[0]),
 			100 * vr->nbrlines, "so_long");
 	vr->img1 = mlx_xpm_file_to_image(vr->mlx, vr->wall, &w, &h);
@@ -125,6 +111,7 @@ void	put_image(t_data *vr, char **argv)
 	vr->img4 = mlx_xpm_file_to_image(vr->mlx, vr->exit, &w, &h);
 	vr->img5 = mlx_xpm_file_to_image(vr->mlx, vr->empty, &w, &h);
 	vr->img6 = mlx_xpm_file_to_image(vr->mlx, vr->sprite, &w, &h);
+	checkxpm(vr);
 	if (vr->move == 0)
 		printf("Number of movement = %d\n", vr->move);
 	drawimage(vr);
@@ -140,13 +127,21 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		v.mlx = mlx_init();
-		v.wall = ft_strdup("../images/wall3.xpm");
-		v.collectible = ft_strdup("../images/collectible2.xpm");
+		v.wall = ft_strdup("../images/wall.xpm");
+		v.collectible = ft_strdup("../images/collectible.xpm");
 		v.player = ft_strdup("../images/player.xpm");
-		v.exit = ft_strdup("../images/exit2.xpm");
+		v.exit = ft_strdup("../images/exit.xpm");
 		v.empty = ft_strdup("../images/empty.xpm");
 		v.sprite = ft_strdup("../images/sprite.xpm");
+		if (!v.mlx || !v.wall || !v.collectible
+			|| !v.player || !v.exit || !v.empty || !v.sprite)
+		{
+			perror("Allocation Failed!\n");
+			exit(1);
+		}
 		put_image(&v, argv);
 		mlx_loop(v.mlx);
 	}
+	else
+		return (0);
 }

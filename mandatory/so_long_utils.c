@@ -6,7 +6,7 @@
 /*   By: olakhdar <olakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:44:44 by olakhdar          #+#    #+#             */
-/*   Updated: 2022/03/15 18:42:31 by olakhdar         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:23:06 by olakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	checkopen(t_data *ptr)
 {
 	if (ptr->fd == -1)
 	{
-		printf("This map is not exist!\n");
+		ft_printf("This map is not exist!\n");
 		exit(1);
 	}
 }
@@ -34,7 +34,7 @@ char	**ft_buffer(t_data *bf, char **argv)
 	buffer = get_next_line(bf->fd);
 	if (buffer == '\0')
 	{
-		printf("Empty Map!\n");
+		ft_printf("Empty Map!\n");
 		exit(1);
 	}
 	while (buffer)
@@ -54,18 +54,18 @@ void	func2(t_data *t, int i, int j)
 {
 	if (t->map[0][j] != '1')
 	{
-		printf("Map Invalid! Please Check It Out.\n");
+		ft_printf("Map Invalid! Please Check It Out.\n");
 		exit(1);
 	}
 	if (t->map[t->nbrlines - 1][j] != '1')
 	{
-		printf("Map Invalid! Please Check It Out.\n");
+		ft_printf("Map Invalid! Please Check It Out.\n");
 		exit(1);
 	}
 	if (t->map[i][j] != '1' && t->map[i][j] != '0'
 		&& t->map[i][j] != 'C' && t->map[i][j] != 'P' && t->map[i][j] != 'E')
 	{
-		printf("Map Invalid! Please Check It Out.\n");
+		ft_printf("Map Invalid! Please Check It Out.\n");
 		exit(1);
 	}
 	if (t->map[i][j] == 'E')
@@ -79,17 +79,17 @@ void	func1(t_data *p, int i)
 {
 	if (ft_strlen(p->map[0]) != ft_strlen(p->map[i]))
 	{
-		printf("Map Invalid! Please Check It Out.\n");
+		ft_printf("Map Invalid! Please Check It Out.\n");
 		exit(1);
 	}
 	if (p->map[i][0] != '1')
 	{
-		printf("Map Invalid! Please Check It Out.\n");
+		ft_printf("Map Invalid! Please Check It Out.\n");
 		exit(1);
 	}
 	if (p->map[i][ft_strlen(p->map[0]) - 1] != '1')
 	{
-		printf("Map Invalid! Please Check It Out.\n");
+		ft_printf("Map Invalid! Please Check It Out.\n");
 		exit(1);
 	}
 }
